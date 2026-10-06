@@ -1,0 +1,9 @@
+node_modules
+dist
+*.local
+
+.vercel
+public/deck
+deliverables
+.vercel
+*.docx

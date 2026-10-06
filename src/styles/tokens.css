@@ -1,0 +1,136 @@
+/* ==========================================================================
+   Field Notes — design tokens
+   The single source of truth. Components reference these, never raw values.
+   Rationale for each value: docs/03-design-system.md
+   ========================================================================== */
+
+:root {
+  /* ---- Colour: surfaces ------------------------------------------------- */
+  --paper: #f2efe7;          /* page — warm, print-like */
+  --surface: #faf8f3;        /* raised sheet */
+  --sunk: #e8e4d9;           /* inset wells: inputs, tracks, chips */
+  --ink-wash: #161512;       /* inverted surfaces (sim bar, toast) */
+
+  /* ---- Colour: text ----------------------------------------------------- */
+  --ink: #161512;            /* 15.9:1 on paper */
+  --ink-2: #4a463e;          /*  8.2:1 */
+  --ink-3: #6b665c;          /*  5.0:1 — muted, still AA */
+  --on-ink: #f2efe7;         /* text on inverted surfaces */
+  --on-ink-2: #a9a396;
+
+  /* ---- Colour: structure ------------------------------------------------ */
+  --rule: #d6d0c2;           /* hairlines */
+  --rule-strong: #161512;    /* emphasised rules (section starts, table heads) */
+  --rule-input: #8a8476;     /* control boundaries — 3.5:1 on surface (WCAG 1.4.11) */
+
+  /* ---- Colour: the one accent ------------------------------------------- */
+  --signal: #d9431a;         /* vermilion: playhead, progress, "you", focus */
+  --signal-ink: #b3370f;     /* signal used as text / under white text */
+  --signal-wash: #f6dccf;    /* 1-step tint for highlighted rows */
+
+  /* ---- Colour: status (reserved — never used as a series colour) ------- */
+  --success: #2e6a3e;
+  --success-wash: #dde8dc;
+  --warning: #8f5b00;
+  --warning-wash: #f1e4c8;
+  --error: #b42318;
+  --error-wash: #f6dad6;
+
+  /* ---- Colour: chart series (validated: dataviz six-check, all pass) ---- */
+  --series-communities: #3a6fb0;
+  --series-referrals: #d9431a;
+  --series-paid: #1f8a6e;
+  --series-organic: #b08a1e;
+  --chart-grid: #e3ded2;
+
+  /* ---- Type families ---------------------------------------------------- */
+  --font-display: 'Newsreader Variable', 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-text: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
+
+  /* ---- Type scale ------------------------------------------------------- */
+  --fs-display-xl: clamp(3.25rem, 1.6rem + 6.4vw, 7rem);    /* 52 → 112 */
+  --fs-display-l: clamp(2.25rem, 1.4rem + 3.4vw, 4rem);     /* 36 → 64 */
+  --fs-heading: clamp(1.75rem, 1.35rem + 1.5vw, 2.5rem);    /* 28 → 40 */
+  --fs-title: 1.25rem;                                        /* 20 */
+  --fs-body-l: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);  /* 17 → 19 */
+  --fs-body: 1rem;                                            /* 16 */
+  --fs-small: 0.875rem;                                       /* 14 */
+  --fs-caption: 0.75rem;                                      /* 12 */
+  --fs-figure: clamp(3.5rem, 2.4rem + 4.2vw, 6rem);          /* 56 → 96 */
+  --fs-stat: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);          /* 28 → 36 */
+
+  --lh-tight: 0.94;
+  --lh-display: 1.02;
+  --lh-heading: 1.1;
+  --lh-ui: 1.3;
+  --lh-body: 1.55;
+
+  --track-display: -0.035em;
+  --track-heading: -0.015em;
+  --track-ui: -0.01em;
+  --track-caps: 0.08em;
+
+  /* ---- Spacing (4-based; only steps in use) ----------------------------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 144px;
+
+  /* ---- Grid ------------------------------------------------------------- */
+  --max-width: 1280px;
+  --cols: 12;
+  --margin: 48px;
+  --gutter: 24px;
+  --section: var(--s-10);
+
+  /* ---- Shape & depth ---------------------------------------------------- */
+  --r-1: 2px;
+  --r-2: 6px;
+  --r-pill: 999px;
+  --hair: 1px solid var(--rule);
+  --lift: 0 1px 0 rgba(22, 21, 18, 0.04), 0 12px 32px -12px rgba(22, 21, 18, 0.28);
+
+  /* ---- Motion ----------------------------------------------------------- */
+  --dur-1: 120ms;   /* hover / press */
+  --dur-2: 200ms;   /* state change */
+  --dur-3: 420ms;   /* reveal / progress */
+  --dur-4: 900ms;   /* count-up */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-emph: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --focus-ring: 0 0 0 2px var(--paper), 0 0 0 4px var(--signal);
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --cols: 8;
+    --margin: 32px;
+    --gutter: 20px;
+    --section: var(--s-9);
+  }
+}
+
+@media (max-width: 639px) {
+  :root {
+    --cols: 4;
+    --margin: 16px;
+    --gutter: 16px;
+    --section: var(--s-8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-1: 0ms;
+    --dur-2: 0ms;
+    --dur-3: 0ms;
+    --dur-4: 0ms;
+  }
+}
